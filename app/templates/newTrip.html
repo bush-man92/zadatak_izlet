@@ -41,6 +41,14 @@
               </div>
 
               <div class="form-label-group">
+                {{ form.date(type="text", id="Date", class="form-control", placeholder="Date")}}
+                <label for="Location"></label>
+                {% for error in form.date.errors %}
+                <span style="color: red;">[{{error}}]</span>
+                {% endfor %}
+              </div>
+
+              <div class="form-label-group">
                 {{ form.transport(type="text", id="Transport", class="form-control", placeholder="Transport")}}
                 <label for="Transport"></label>
                 {% for error in form.transport.errors %}
@@ -68,14 +76,6 @@
                 {{ form.total_cost(type="text", id="Total cost", class="form-control", placeholder="Total cost")}}
                 <label for="Total_cost"></label>
                 {% for error in form.total_cost.errors %}
-                <span style="color: red;">[{{error}}]</span>
-                {% endfor %}
-              </div>
-
-              <div class="form-label-group">
-                {{ form.cost_per_user(type="text", id="cost_per_user", class="form-control", placeholder="Cost per user")}}
-                <label for="cost_per_user"></label>
-                {% for error in form.cost_per_user.errors %}
                 <span style="color: red;">[{{error}}]</span>
                 {% endfor %}
               </div>
