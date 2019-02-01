@@ -49,8 +49,6 @@ def logout():
 def home():
     trip = Trip.query.first()
     form = HomeSearchForm()
-    if form.validate_on_submit():
-        home_search()
     if trip is not None:
         all_trips = Trip.query.all()
         data = []
@@ -60,6 +58,8 @@ def home():
         return render_template('home.html', title='Home', data= data, form= form)
     return render_template('home.html', title='Home')
 
+@app.route('/home/search/<id>', methods=['GET', 'POST'])
+@login_required
 def home_search():
     trips = Trip.query.all()
     form = HomeSearchForm()
