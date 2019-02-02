@@ -58,7 +58,7 @@
 	<h3>JOINED USERS</h3>
 	<div class="vertical-menu">
 		{% for user in data.users %}
-  			<a href = "{{ url_for('profile', id=user.username) }}">{{user.username}}</a>
+  			<a id = "maker" href = "{{ url_for('profile', id=user.username) }}">{{user.username}}</a>
   		{% endfor %}
 	</div>
 

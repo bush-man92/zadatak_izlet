@@ -49,7 +49,7 @@
     <h6 id="otherInfo">Past trips</h6>
     <div style="overflow-y: scroll; width:500px; height:70px;" id="otherInfo">
     {% for trip in data.past_trips %}
-      <a href="{{ url_for('trip', trip_id=trip.id) }}">{{trip.location}}</a>
+      <a id="pastTrips" href="{{ url_for('trip', trip_id=trip.id) }}">{{trip.location}}</a>
       <br>
     {% endfor %}
     </div>

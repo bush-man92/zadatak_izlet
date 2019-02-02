@@ -73,6 +73,7 @@ def home_search():
 @app.route('/home/my_trips')
 @login_required
 def my_trips():
+    form = HomeSearchForm()
     trip = Trip.query.first()
     if trip is not None:
         all_trips = Trip.query.filter_by(creator_id=current_user.id)
@@ -80,13 +81,14 @@ def my_trips():
         for trips in all_trips:
             trips_data = {'location' : trips.location, 'about' : trips.about, 'rating' : trips.trip_rating, 'cost' : str(trips.total_cost) + ' kn', 'id' : trips.id}
             data.append(trips_data)
-        return render_template('home.html', title='Home', data= data)
-    return render_template('home.html', title='Home')
+        return render_template('home.html', title='Home', data= data, form= form)
+    return render_template('home.html', title='Home', form=form)
 
 @app.route('/home/trips_i_joined')
 @login_required
 def trips_i_joined():
     trip = Trip.query.first()
+    form = HomeSearchForm()
     if trip is not None:
         data = []
         form_join = JoinTrip.query.filter_by(user_id = current_user.id)
@@ -96,8 +98,8 @@ def trips_i_joined():
                 trips_data = {'location' : trips.location, 'about' : trips.about, 'rating' : trips.trip_rating,
                 'cost' : str(trips.total_cost) + ' kn', 'id' : trips.id}
                 data.append(trips_data)
-        return render_template('home.html', title='Home', data= data)
-    return render_template('home.html', title='Home')
+        return render_template('home.html', title='Home', data= data, form=form)
+    return render_template('home.html', title='Home', form=form)
 
 @app.route('/trip/<trip_id>', methods=['GET', 'POST'])
 @login_required
